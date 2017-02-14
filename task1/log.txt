@@ -1,0 +1,11 @@
+commit c667918a6f6b4f3f2b57c6d3d5d1316f3548653a
+Author: Vladislav.Kubitski <kubitskivlad@mail.ru>
+Date:   Tue Feb 14 22:57:40 2017 +0300
+
+    second commit
+
+commit f93d5aa5d2f3898c0b9949faf070adc693869e8b
+Author: Vladislav.Kubitski <kubitskivlad@mail.ru>
+Date:   Tue Feb 14 22:45:10 2017 +0300
+
+    add .gitignore
