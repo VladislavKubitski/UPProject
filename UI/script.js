@@ -1,3 +1,8 @@
+
+
+var user = 'Владислав';
+
+var articlesModuleCreater = function () {
 var articles = [
   {
     id: '4',
@@ -197,68 +202,102 @@ var articles = [
 
 var itemm = {
 	id: '21',
-    title: 'Удивительные дюны на поверхности кометы Чурюмова-Герасименко',
+    title: 'LLGGGGGGG',
     summary: 'Удивительные снимки, сделанные при помощи космического аппарата «Розетта» (Rosetta), демонстрируют присутствие геологических форм, напоминающих дюны, на поверхности кометы Чурюмова-Герасименко.',
     createdAt: new Date('2017-01-26T23:00:00'),
     author: 'Иванов А.В.',
     content: 'Удивительные снимки, сделанные при помощи космического аппарата «Розетта» (Rosetta), демонстрируют присутствие геологических форм, напоминающих дюны, на поверхности кометы Чурюмова-Герасименко. Ученые из лаборатории Laboratoire de Physique et Mécanique des Milieux Hétérogènes (CNRS/ESPCI Paris/UPMC/Université Paris Diderot) проанализировали доступные снимки и произвели моделирование выделения газов с поверхности кометы, чтобы объяснить наблюдаемые явления. Исследователи показали, что большая разница в давлениях газов между освещенной и неосвещенной солнечными лучами сторонами кометы приводит к формированию ветров, способных переносить частицы пыли и формировать дюны.',
    	tags: ['#Photo', '#USSR', '#Mars']
-   };
+};
+
 
 var tags = ['#Space', '#SpaceX', '#Mars', '#Earth', '#NASA', '#USSR', '#USA', '#History', '#Science', '#Photo'];
 
-
+var ourArticles;
 function getArticles(skip, top, filterConfig) {
-	var ourArticles;
-	if (typeof(filterConfig) === 'string') {
-	 	var ourArticlesAuthor = articles.filter(function(item) {
-			return (item.author === filterConfig)
-		});
-		ourArticles = ourArticlesAuthor;
-	}
-	else {
-		// if (typeof(filterConfig.tags) === 'string') {
-		// 	var boolll = false;
-		// 	var nowTags = filterConfig.tags.split(',');
-		// 	for (var i = 0; i < articles.length; i++) {
-		// 		for (var j = 0; j < articles.tags.length; j++) {
-		// 			for (var k = 0; k < nowTags.length; k++) {
-		// 				if (articles.tags[j] == nowTags[k]) {
-		// 					boolll = true;
-		// 					break;
-		// 				}
-		// 			}
-		// 			if (boolll === false) {
-		// 				break;
-		// 			}
-		// 			else {
-		// 				boolll = false;
-		// 			}
-		// 		}
-		// 		if (boolll === false) {
-		// 			break;
-		// 		}
-		// 		else {
-		// 			ourArticles.push(articles[i]);
-		// 		}
-		// 	}
-		// }
-		// else {
-			ourArticles = articles;
-		
-	}
-	ourArticles.sort(function (a, b) {
-		if (a.createdAt > b.createdAt) {
-			return 1;
-		}
-		if (a.createdAt > b.createdAt) {
-			return -1;
-		}
-		return 0;
-	});
-	var mas = ourArticles.slice(skip, skip + top);
-	return mas;
+  skip = skip || 0;
+  top = top || 10;
+   ourArticles = articles;
+  if (filterConfig) {
+      if (filterConfig.author) {
+        if (typeof(filterConfig.author) === 'string') {
+        var afterAuthorArticles  = articles.filter(function(item) {
+         return (item.author === filterConfig.author);
+        });
+        ourArticles = afterAuthorArticles;
+      }
+
+      if ((filterConfig.fromDate) && (filterConfig.toDate)) {
+        var afterDateArticles = ourArticles.filter(function(){
+          return ((filterConfig.fromDate <= item.createdAt) && (filterConfig.toDate > item.createdAt)) 
+        });
+        ourArticles = afterDateArticles;
+      }
+      else {
+        if (filterConfig.fromDate) {
+          var afterDateArticles = ourArticles.filter(function(){
+            return (filterConfig.fromDate <= item.createdAt) 
+          });
+          ourArticles = afterDateArticles;
+        }
+        else {
+          if (filterConfig.toDate) {
+            var afterDateArticles = ourArticles.filter(function(){
+              return (filterConfig.toDate > item.createdAt) 
+            });
+            ourArticles = afterDateArticles;
+          }
+        }
+      }
+    }
+  }
+  ourArticles.sort(function (a, b) {
+      return b.createdAt - a.createdAt;
+  });
+  var mas = ourArticles.slice(skip, skip + top);
+  return mas;
 };
+
+function sortArticles (masArticles, filterConfig){
+  ourArticles = masArticles;
+    if (filterConfig) {
+        if (filterConfig.author) {
+          if (typeof(filterConfig.author) === 'string') {
+          var afterAuthorArticles  = masArticles.filter(function(item) {
+           return (item.author === filterConfig.author);
+          });
+          ourArticles = afterAuthorArticles;
+        }
+
+        if ((filterConfig.fromDate) && (filterConfig.toDate)) {
+          var afterDateArticles = ourArticles.filter(function(){
+            return ((filterConfig.fromDate <= item.createdAt) && (filterConfig.toDate > item.createdAt)) 
+          });
+          ourArticles = afterDateArticles;
+        }
+        else {
+          if (filterConfig.fromDate) {
+            var afterDateArticles = ourArticles.filter(function(){
+              return (filterConfig.fromDate <= item.createdAt) 
+            });
+            ourArticles = afterDateArticles;
+          }
+          else {
+            if (filterConfig.toDate) {
+              var afterDateArticles = ourArticles.filter(function(){
+                return (filterConfig.toDate > item.createdAt) 
+              });
+              ourArticles = afterDateArticles;
+            }
+          }
+        }
+      }
+    ourArticles.sort(function (a, b) {
+        return b.createdAt - a.createdAt;
+    });
+    return ourArticles;
+    };
+}
 
 function getArticle(id) {
 	var myItem;
@@ -357,9 +396,206 @@ function findTags (tag) {
 function addArticle(item) {
 	if(validateArticle (item)) {
 		articles.push(item);
+    globalData.masArticles.push(item);
 		return true;
 	}
 	return false;
 };
-console.log(getArticles(4,7,'Иванов А.В.'));
+
+
+return { 
+  getArticles: getArticles,
+  itemm: itemm,
+  itemmm: itemmm,
+  sortArticles: sortArticles,
+  removeArticle: removeArticle,
+  addArticle: addArticle,
+  editArticle: editArticle,
+  validateArticle: validateArticle
+}
+};
+
+var itemm = {
+  id: '21',
+    title: 'LLGGGGGGG',
+    summary: 'Удивительные снимки, сделанные при помощи космического аппарата «Розетта» (Rosetta), демонстрируют присутствие геологических форм, напоминающих дюны, на поверхности кометы Чурюмова-Герасименко.',
+    createdAt: new Date('2015-01-26T23:00:00'),
+    author: 'Иванов А.В.',
+    content: 'Удивительные снимки, сделанные при помощи космического аппарата «Розетта» (Rosetta), демонстрируют присутствие геологических форм, напоминающих дюны, на поверхности кометы Чурюмова-Герасименко. Ученые из лаборатории Laboratoire de Physique et Mécanique des Milieux Hétérogènes (CNRS/ESPCI Paris/UPMC/Université Paris Diderot) проанализировали доступные снимки и произвели моделирование выделения газов с поверхности кометы, чтобы объяснить наблюдаемые явления. Исследователи показали, что большая разница в давлениях газов между освещенной и неосвещенной солнечными лучами сторонами кометы приводит к формированию ветров, способных переносить частицы пыли и формировать дюны.',
+    tags: ['#Photo', '#USSR', '#Mars']
+};
+var itemmm = {
+  id: '22',
+    title: 'PPPPPPPP',
+    summary: 'Удивительные снимки, сделанные при помощи космического аппарата «Розетта» (Rosetta), демонстрируют присутствие геологических форм, напоминающих дюны, на поверхности кометы Чурюмова-Герасименко.',
+    createdAt: new Date('2017-01-26T23:00:00'),
+    author: 'Иванов А.В.',
+    content: 'Удивительные снимки, сделанные при помощи космического аппарата «Розетта» (Rosetta), демонстрируют присутствие геологических форм, напоминающих дюны, на поверхности кометы Чурюмова-Герасименко. Ученые из лаборатории Laboratoire de Physique et Mécanique des Milieux Hétérogènes (CNRS/ESPCI Paris/UPMC/Université Paris Diderot) проанализировали доступные снимки и произвели моделирование выделения газов с поверхности кометы, чтобы объяснить наблюдаемые явления. Исследователи показали, что большая разница в давлениях газов между освещенной и неосвещенной солнечными лучами сторонами кометы приводит к формированию ветров, способных переносить частицы пыли и формировать дюны.',
+    tags: ['#Photo', '#USSR', '#Mars']
+};
+
+var htmlControllerModule = function(){
+  var ARTICLE_TEMPLATE;
+  var ARTICLE_LIST_NODE;
+
+    function init() {
+        ARTICLE_TEMPLATE = document.querySelector('#template-article-list-item');
+        ARTICLE_LIST_NODE = document.querySelector('.news-left-part');
+        console.log(ARTICLE_TEMPLATE);
+        console.log(ARTICLE_LIST_NODE);
+    }
+
+    function removeArticlesFromDom () {
+        ARTICLE_LIST_NODE.innerHTML = '';
+    }
+
+    function renderArticles(articles) {
+        removeArticlesFromDom();
+        articles.forEach(function (article) {
+          addArticle(article);
+        });
+    }
+
+    function changeUser (nameUser) {
+      user = nameUser;
+      if (!user) {
+        var articlesDelete = document.getElementsByClassName('news-delete');
+        var articlesEdit = document.getElementsByClassName('news-edit');
+        for (var i = 0; i < articlesDelete.length; i++) {
+          articlesDelete[i].style.display = 'none';
+          articlesEdit[i].style.display = 'none';
+        }
+        var articlesAdd = document.getElementsByClassName('news-buttom');
+        for (var i = 0; i < articlesAdd.length; i++) {
+          articlesAdd[i].style.display = 'none';
+        }
+        var name = document.getElementById('enter-name1');
+        var enter = document.getElementById('enter-enter');
+        enter.innerHTML = 'Войти';
+        name.style.display = 'none';
+      }
+      else {
+        var articlesDelete = document.getElementsByClassName('news-delete');
+        var articlesEdit = document.getElementsByClassName('news-edit');
+        for (var i = 0; i < articlesDelete.length; i++) {
+          articlesDelete[i].style.display = 'inline';
+          articlesEdit[i].style.display = 'inline';
+        }
+        var articlesAdd = document.getElementsByClassName('news-buttom');
+        for (var i = 0; i < articlesAdd.length; i++) {
+          articlesAdd[i].style.display = 'inline';
+        }
+        var name = document.getElementById('enter-name1');
+        var enter = document.getElementById('enter-enter');
+        name.style.display = 'inline';
+        name.innerHTML = nameUser;
+        enter.innerHTML = 'Выйти';
+      }
+    }
+
+    function renderArticle(article) {
+        var template = ARTICLE_TEMPLATE;
+        template.content.querySelector('.news-item1').dataset.id = article.id;
+        template.content.querySelector('.news-link').textContent = article.title;
+        template.content.querySelector('.news-speech').textContent = article.summary;
+        template.content.querySelector('.news-author').textContent = article.author;
+        template.content.querySelector('p.news-data').textContent = formatDate(article.createdAt);
+        template.content.querySelector('.tags').textContent = '';
+        article.tags.forEach(function(tag) {
+          template.content.querySelector('.tags').textContent +=  ' ' + tag;
+        });
+        return template.content.querySelector('.news-item1').cloneNode(true);
+    }
+    function addArticle(article) {
+      var html = renderArticle(article);
+      ARTICLE_LIST_NODE.appendChild(html);
+    }
+
+    function formatDate(d) {
+        return d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear() + ' ' +
+            d.getHours() + ':' + d.getMinutes();
+    }
+
+    return {
+      init: init,
+      renderArticles: renderArticles,
+      addArticle: addArticle,
+      changeUser: changeUser
+    }
+}
+
+
+var htmlController = htmlControllerModule();
+htmlController.init();
+var articleController = articlesModuleCreater();
+var globalData = {
+  skip: 0,
+  top: 0,
+  filterConfig: null,
+  masArticles: articleController.articles
+};
+
+function displayArcticles(skip, top, filterConfig) {
+  var articles = articleController.getArticles(skip, top, filterConfig);
+  globalData.skip = skip;
+  globalData.top = top;
+  globalData.filterConfig = filterConfig;
+  globalData.masArticles = articles;
+  htmlController.renderArticles(articles);
+}
+
+function addArticle(article) {
+  articleController.addArticle(article);
+  globalData.masArticles = articleController.sortArticles(globalData.masArticles, globalData.filterConfig);
+  htmlController.renderArticles(globalData.masArticles);
+}
+
+function removeArticle(id) {
+  articleController.removeArticle(id);
+  globalData.masArticles.forEach(function (item, idElement, articles) {
+    if (id == item.id) {
+      articles.splice(idElement, 1);
+    }
+  });
+  htmlController.renderArticles(globalData.masArticles);
+}
+function editArticle(id, article) {
+  articleController.editArticle(id, article);
+  var myItem;
+  globalData.masArticles.forEach(function (item, idElement, articles) {
+  if (id == item.id) {  
+    myItem = item;
+  }
+  });
+  if (articleController.validateArticle(myItem)) {
+    if (typeof(article.title) === 'string') {
+      myItem.title = article.title;    
+    }
+    if (typeof(article.content) === 'string') {
+      myItem.content = article.content;
+    }
+    if (typeof(article.summary) === 'string') {
+      myItem.summary = article.summary;
+    }
+    if (typeof(article.tags === Object)) {
+      myItem.tags = article.tags;
+    }
+  } 
+  htmlController.renderArticles(globalData.masArticles);
+}
+
+function changeUser (nameUser) {
+  htmlController.changeUser(nameUser);
+}
+
+
+
+
+
+
+
+
+
+
+
 
