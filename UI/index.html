@@ -1,107 +1,248 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<title>Мой первый сайт</title>
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	<link rel="stylesheet" media="screen" href="media.css">
+    <meta charset="utf-8">
+    <title>News</title>
+    <link rel="stylesheet" type="text/css" href="../UI/css/styles.css">
+    <link rel="stylesheet" media="screen" href="../UI/css/media.css">
 
 </head>
-<body>	
-	<header id="qwerty">
-			<p class="picture"><img class="picture" src="../moqups/12345.jpg"></p>
-			<div class="enter">
-				<p class="enter-name"><a href="" id="enter-name1">Владислав</a></p>
-				<p class="enter-name"><a href="" id="enter-enter">Выйти</a></p>
-			</div>	
-			<div class="clear-block"></div>
-	</header>
-	<div class="header-container">
-			<p class="picture"><img class="picture" src="../moqups/12345.jpg"></p>	
-			<div class="clear-block"></div>
-	</div>
-	<div class="news-container">
-		<div class="news-left-part">
 
-			<div class="clear-block"></div>
-		</div>
+<body>
+    <header id="qwerty">
+        <p class="picture"><img class="picture-header" src="../moqups/img/SpNews.png"></p>
+        <div class="container-user-add">
+            <p class="enter-add" onclick="addNews()">
+                <img id="enter-add" src="../moqups/img/add.png"></img>
+            </p>
+            <p class="enter-user">
+                <img id="enter-user" src="../moqups/img/user.png"></img>
+            </p>
+            <p class="enter-user" onclick="showFilter()">
+                <img src="../moqups/img/filter.png" class="filter-icon"></img>
+            </p>
+        </div>
+        <div class="clear-block"></div>
+    </header>
 
-		<div class="news-right-part">
-				<form class="news-filter">
-						<p class="news-filter-title">Фильтр</p>
-						<p class="news-filter-author">По имени автора:</p>
-						<p class="news-filter-input">
-							<input type="test" name="author" size="28" placeholder="Петров А.Г.">
-						</p>
-						<p class="news-filter-data">По дате:</p>
-						<p class="news-filter-input">
-							<input type="test" name="data" size="28" placeholder="12.07.43">
-						</p>
-						<p class="news-filter-month">По месяцу:</p>
-						<p class="news-filter-input">
-							<input type="test" name="month" size="28" placeholder="02">
-						</p>
-						<p class="news-filter-tags">По тегам</p>
-						<p class="news-filter-input">
-							<input type="test" name="tags" size="28" placeholder="#Belarus #Minsk">
-						</p>
-						<div class="clear-block"></div>
-				</form>
-				<div class="clear-block"></div>
-		</div>
-	</div>
-	<div class="container-pagination">
-		<div class="pagination">
-			<a href="#">&laquo;</a>
-			<a href="#">1</a>
-			<a class="active" href="#">2</a>
-			<a href="#">3</a>
-			<a href="#">4</a>
-			<a href="#">5</a>
-			<a href="#">&raquo;</a>
-		</div>
-		<div class="clear-block"></div>
-	</div>
-	<div class="news-buttom-add">
-		<p>
-			<a href="" ><img class="news-buttom" src="../moqups/add.png"></a>
-		</p>
-	</div>
-	<!-- <footer>
-		<p class="footer"><img class="footer-picture" src="12345.jpg"></p>
-		<p class="footer">kubitskivlad@mail.ru</p>
-		<p class="footer">Кубицкий Владислав Олегович</p>
-		<p class="footer">27.02.97</p>
-	</footer> -->
-	 <template id="template-article-list-item">
-            <div class="news-item1">
-						<div class="news-data">
-							<p class="news-data">20.02.2017</p>
-						</div>
-						<div class="news-clamping">
-							<div class="news-subtitle">
-								<a class="news-link">
-									Новая авиакосмическая фирма предлагает высотные воздушные шары
-								</a>
-							</div>
-							<div class="news-speech">
-								Частная компания World View Enterprises, которая планирует продавать туристические путевки в высокие слои атмосферы, к границе с космосом, на борту воздушного шара, объявила об открытии новой штаб-квартиры и объединенного с ней космодрома в г. Тусон, штат Аризона, США.
-							</div>
-						</div>    
-						<div class="news-tags">
-							<p class="tags">#Belarus #Minsk</p>
-						</div>    
-						<div class="news-author-delete-edit">
-							<p class="news-author">Иванов А.В.</p>
-							<p class="delete"><a href=""><img class="news-delete" src="../moqups/delete.png"></a></p>
-							<p class="edit"><a href=""><img class="news-edit" src="../moqups/edit.png"></a></p>
-							<p class="open"><a href="">Читать</a></p>
-						</div>  
-			</div>
+    <div class="news-container" id="news-part">
+        <div class="news-left-part" >
+            <div class="clear-block"></div>
+        </div>
+        <div class="clear-block"></div>
+        <div class="show-more-button" id="show-more-button">
+            <p>Загрузить еще</p>
+        </div>
+    </div>
+
+    <template id="template-article-list-item">
+        <div class="news-item">
+            <div class="news-data">
+                <p class="news-data"></p>
+            </div>
+            <div class="news-clamping">
+                <div class="news-subtitle">
+                    <a class="news-link"></a>
+                </div>
+                <div class="news-speech"></div>
+            </div>
+            <!--<div class="news-tags">
+                <p class="tags"></p>
+            </div>-->
+            <div class="news-author-delete-edit">
+                <p class="news-author"></p>
+                <button class="read-post-button" >Подробнее</button>
+                <p class="delete">
+                    <img class="news-delete" src="../moqups/img/delete.png"></img>
+                </p>
+                <p class="edit">
+                    <img class="news-edit" src="../moqups/img/edit.png"></img>
+                </p>
+                <div class="clear-block"></div>
+            </div>
+        </div>
         </div>
     </template>
-    	<script type="text/javascript" src="script.js"></script>
+
+
+
+
+    <div id="add-news-container">
+        <p class="new-news">Добавить новость</p>
+        <div class="add-news-id">
+            <p class="add-news-id-p">
+                ID:
+            </p>
+            <input type="text" name="add-id" id="add-news-id-input" disabled> 
+        </div>
+        <div class="add-news-title">
+            <p class="add-news-title-p">
+                Заголовок:
+            </p>
+            <input type="text" name="add-title" id="add-news-title-input" required placeholder="Заголовок" maxlength="100"> 
+        </div>
+        <div class="add-news-name-author">
+            <p class="add-news-name-author-p">
+                Имя автора:
+            </p>
+            <input type="text" name="add-author" id="add-news-name-author-input" disabled> 
+        </div>
+        <div class="add-news-date">
+            <p class="add-news-date-p">
+                Дата и время добавления:
+            </p>
+            <input type="text" name="add-date" id="add-news-date-input" disabled> 
+        </div>
+        <div class="add-news-summary">
+            <p class="add-news-summary-p">
+                Краткое описание:
+            </p>
+            <input type="text" name="add-summaty" id="add-news-summary-input" required placeholder="Краткое описание" maxlength="200"> 
+        </div>
+         <div class="add-news-content">
+            <p class="add-news-content-p">
+                Текст:
+            </p>
+            <input type="text" name="add-content" id="add-news-content-input" required placeholder="Текст"> 
+        </div>
+        <div class="button-container-add-news">
+                <button type="button" class="add-news-button" onclick="addNewButton()">Добавить</button>
+        </div>
+        <div class="clear-block"></div>
+        
+    </div>
+
+
+
+    <div id="edit-news-container">
+        <p class="new-news">Редактировать новость</p>
+        <div class="edit-news-id">
+            <p class="edit-news-id-p">
+                ID:
+            </p>
+            <input type="text" name="edit-id" id="edit-news-id-input" disabled> 
+        </div>
+        <div class="edit-news-title">
+            <p class="edit-news-title-p">
+                Заголовок:
+            </p>
+            <input type="text" name="edit-title" id="edit-news-title-input" required placeholder="Заголовок" maxlength="100"> 
+        </div>
+        <div class="edit-news-name-author">
+            <p class="edit-news-name-author-p">
+                Имя автора:
+            </p>
+            <input type="text" name="edit-author" id="edit-news-name-author-input" disabled> 
+        </div>
+        <div class="edit-news-date">
+            <p class="edit-news-date-p">
+                Дата и время добавления:
+            </p>
+            <input type="text" name="edit-date" id="edit-news-date-input" disabled> 
+        </div>
+        <div class="edit-news-summary">
+            <p class="edit-news-summary-p">
+                Краткое описание:
+            </p>
+            <input type="text" name="edit-summaty" id="edit-news-summary-input" required placeholder="Краткое описание" maxlength="200"> 
+        </div>
+         <div class="edit-news-content">
+            <p class="edit-news-content-p">
+                Текст:
+            </p>
+            <input type="text" name="edit-content" id="edit-news-content-input" required placeholder="Текст"> 
+        </div>
+        <div class="button-container-edit-news">
+                <button type="button" class="edit-news-button" onclick="editNews()" id="edit-button">Редактировать</button>
+        </div>
+        <div class="clear-block"></div>
+        
+    </div>
+
+
+    <div class="full-news-container" id="full-news-container">
+        <div class="full-news-date">
+            <p class="full-news-date-p" id="full-news-date-p"></p>
+        </div>
+        <div class="full-news-title">
+            <p class="full-news-title-p" id="full-news-title-p"></p>
+        </div>
+        <div class="full-news-speech">
+            <p class="full-news-speech-p" id="full-news-speech-p"></p>
+        </div>
+        <div class="full-news-author">
+            <p class="full-news-author-p" id="full-news-author-p"></p>
+        </div>
+        <div class="full-button-container-delete-news" >
+            <button type="button" class="full-delete-news-button" id="full-delete-news-button" onclick="deleteButtonFromFull()">Удалить</button>
+        </div>
+        <div class="full-button-container-edit-news">
+             <button type="button" class="full-edit-news-button" id="full-edit-news-button" onclick="editButtonFromFull()">Редактировать</button>
+        </div>
+        
+    </div>
+
+
+    <footer>
+        <p class="footer">kubitskivlad@mail.ru</p>
+        <p class="footer">Кубицкий Владислав Олегович</p>
+        <p class="footer">27.02.97</p>
+    </footer>
+
+    <template id="template-article-list-item">
+        <div class="news-item">
+            <div class="news-data">
+                <p class="news-data"></p>
+            </div>
+            <div class="news-clamping">
+                <div class="news-subtitle">
+                    <a class="news-link"></a>
+                </div>
+                <div class="news-speech"></div>
+            </div>
+            <!--<div class="news-tags">
+                <p class="tags"></p>
+            </div>-->
+            <div class="news-author-delete-edit">
+                <p class="news-author"></p>
+                <button class="read-post-button">Подробнее</button>
+                <p class="delete">
+                    <img class="news-delete" src="../moqups/img/delete.png"></img>
+                </p>
+                <p class="edit">
+                    <img class="news-edit" src="../moqups/img/edit.png"></img>
+                </p>
+                <div class="clear-block"></div>
+            </div>
+        </div>
+        </div>
+    </template>
+
+    <!-- forms -->
+    <div class="filter">
+        <form class="news-filter" id="news-filter" name="filter">
+            <p class="news-filter-title">Фильтр</p>
+            <p class="news-filter-author">По имени автора:</p>
+            <input type="text" name="author" class="news-filter-input" placeholder="Петров А.Г.">
+            <p class="news-filter-data">С:</p>
+            <input type="date" name="dateFrom" class="news-filter-input" placeholder="12.07.43">
+            <p class="news-filter-month">По:</p>
+            <input type="date" name="dateTo" class="news-filter-input" placeholder="02">
+            <p class="news-filter-tags">По тегам</p>
+            <input type="test" name="tags" class="news-filter-input" placeholder="#Belarus #Minsk">
+            <div class="button-container">
+                <button type="button" onclick="hideFilter()">Отмена</button>
+            </div>
+            <input name="submit" type="button" value="Применить"></input>
+        </form>
+    </div>
+
+    <div id="overlay"></div>
+
+    <script type="text/javascript" src="../UI/scripts/articleController.js"></script>
+    <script type="text/javascript" src="../UI/scripts/htmlControllerModule.js"></script>
+    <script type="text/javascript" src="../UI/scripts/script.js"></script>
 </body>
 
 </html>
-
