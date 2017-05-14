@@ -22,8 +22,8 @@ header {
 }
 
 .picture {
-	width: 49%;
-	margin: 0% 5%;
+	width: 20%;
+	margin: 0% 5px 0% 5%;
 	padding: 0px 60px;
 	margin-bottom: 0%;
 	float: left;
@@ -31,6 +31,30 @@ header {
 .picture-header {
 	height: 70px;
 }
+.tags-buttons {
+  background: transparent;
+  text-align: center;
+	border-style: none;
+  color: #FF5722;
+  cursor: pointer;
+  outline-style: none;
+	float: left;
+	margin-top: 20px;
+}
+.body-header-tag-button {
+	float: right;
+	border: 0;
+	outline: 0;
+	color: #FBE9E7;
+	background-color: transparent;
+	font-size: 18px;
+	padding: 4px 20px;
+}
+.body-header-tag-button:hover {
+	color: #FFF;
+	text-decoration: 'underline';
+}
+
 .container-user-add {
 	position: absolute;
 	right: 0;
@@ -93,6 +117,7 @@ p.delete, p.edit {
 	float: right;
 	width: 16px;
 	margin: 0;
+	display: block;
 }
 
 p.delete {
@@ -240,6 +265,97 @@ p.news-filter-title {
 	color:  #FFF;
 }
 
+
+/*enter-exit*/
+.user-enter-container {
+	position: fixed;
+	top: 70px;
+	right: -1000px;
+	border-radius: 0 0 0 15px;
+	z-index: 20;
+	background: #FFF;
+	padding: 20px;
+	transition-duration: 0.5s;
+}
+.user-exit-container  {
+	position: fixed;
+	top: 70px;
+	right: -1000px;
+	border-radius: 0 0 0 15px;
+	z-index: 20;
+	background: #FFF;
+	padding: 20px;
+	transition-duration: 0.5s;
+}
+#user-exit-container-name {
+	font-size: 20px;
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 15px;
+	color: #FF5722;
+}
+#user-enter-login-input{
+	margin: 4px 20px;
+	width: calc(100% - 40px);
+	font-size: 14px;
+	padding: 7px;
+	border: 0;
+	outline: 0;
+	background: #F5F5F5;
+}
+#user-enter-password-input{
+	margin: 4px 20px;
+	width: calc(100% - 40px);
+	font-size: 14px;
+	padding: 7px;
+	border: 0;
+	outline: 0;
+	background: #F5F5F5;
+}
+
+
+.button-container-enter {
+	margin: 4px 20px;
+	width: calc(100% - 40px);
+}
+.button-container-exit {
+	margin: 4px 20px;
+	width: calc(100% - 40px);
+}
+
+.button-container-enter {
+	margin: 5px;
+	width: calc(50% - 10px);
+	float: left;
+	border: 0;
+	outline: 0;
+	color: #FF5722;
+	font-size: 14px;
+	background: transparent;
+	border-radius: 10px;
+}
+.button-container-exit {
+	margin: 5px;
+	width: calc(50% - 10px);
+	float: left;
+	border: 0;
+	outline: 0;
+	color: #FF5722;
+	font-size: 14px;
+	background: transparent;
+	border-radius: 10px;
+}
+
+.button-container-enter :hover {
+	background: #FF5722;
+	color:  #FFF;
+}
+.button-container-exit :hover {
+	background: #FF5722;
+	color:  #FFF;
+}
+
+
 .clear-block {
 	clear: both;
 }
@@ -365,6 +481,9 @@ p.new-news {
 .full-edit-news-button:hover {
 	color: #FFF;
 	background: #FF5722;
+}
+#full-news-id-p {
+	display: none;
 }
 
 

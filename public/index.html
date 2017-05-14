@@ -4,23 +4,31 @@
 <head>
     <meta charset="utf-8">
     <title>News</title>
-    <link rel="stylesheet" type="text/css" href="../UI/css/styles.css">
-    <link rel="stylesheet" media="screen" href="../UI/css/media.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" media="screen" href="css/media.css">
 
 </head>
 
 <body>
     <header id="qwerty">
-        <p class="picture"><img class="picture-header" src="../moqups/img/SpNews.png"></p>
+        <p class="picture"><img class="picture-header" src="img/SpNews.png"></p>
+        <div class="tags-buttons">
+            <button class="body-header-tag-button">Космос</button>
+            <button class="body-header-tag-button">Наука</button>
+            <button class="body-header-tag-button">НАСА</button>
+            <button class="body-header-tag-button">История</button>
+            <button class="body-header-tag-button">Земля</button>
+            <button class="body-header-tag-button">Все</button>
+        </div>
         <div class="container-user-add">
             <p class="enter-add" onclick="addNews()">
-                <img id="enter-add" src="../moqups/img/add.png"></img>
+                <img id="enter-add" src="img/add.png"></img>
             </p>
-            <p class="enter-user">
-                <img id="enter-user" src="../moqups/img/user.png"></img>
+            <p class="enter-user" onclick="changeUser()">
+                <img id="enter-user" src="img/user.png"></img>
             </p>
             <p class="enter-user" onclick="showFilter()">
-                <img src="../moqups/img/filter.png" class="filter-icon"></img>
+                <img src="img/filter.png" class="filter-icon"></img>
             </p>
         </div>
         <div class="clear-block"></div>
@@ -54,10 +62,10 @@
                 <p class="news-author"></p>
                 <button class="read-post-button" >Подробнее</button>
                 <p class="delete">
-                    <img class="news-delete" src="../moqups/img/delete.png"></img>
+                    <img class="news-delete" src="img/delete.png"></img>
                 </p>
                 <p class="edit">
-                    <img class="news-edit" src="../moqups/img/edit.png"></img>
+                    <img class="news-edit" src="img/edit.png"></img>
                 </p>
                 <div class="clear-block"></div>
             </div>
@@ -107,13 +115,10 @@
             <input type="text" name="add-content" id="add-news-content-input" required placeholder="Текст"> 
         </div>
         <div class="button-container-add-news">
-                <button type="button" class="add-news-button" onclick="addNewButton()">Добавить</button>
+                <button type="button" class="add-news-button" id="add-news-button">Добавить</button>
         </div>
         <div class="clear-block"></div>
-        
     </div>
-
-
 
     <div id="edit-news-container">
         <p class="new-news">Редактировать новость</p>
@@ -154,32 +159,36 @@
             <input type="text" name="edit-content" id="edit-news-content-input" required placeholder="Текст"> 
         </div>
         <div class="button-container-edit-news">
-                <button type="button" class="edit-news-button" onclick="editNews()" id="edit-button">Редактировать</button>
+                <button type="button" class="edit-news-button" id="edit-news-button">Редактировать</button>
         </div>
         <div class="clear-block"></div>
-        
     </div>
 
 
     <div class="full-news-container" id="full-news-container">
-        <div class="full-news-date">
-            <p class="full-news-date-p" id="full-news-date-p"></p>
-        </div>
-        <div class="full-news-title">
-            <p class="full-news-title-p" id="full-news-title-p"></p>
-        </div>
-        <div class="full-news-speech">
-            <p class="full-news-speech-p" id="full-news-speech-p"></p>
-        </div>
-        <div class="full-news-author">
-            <p class="full-news-author-p" id="full-news-author-p"></p>
-        </div>
-        <div class="full-button-container-delete-news" >
-            <button type="button" class="full-delete-news-button" id="full-delete-news-button" onclick="deleteButtonFromFull()">Удалить</button>
-        </div>
-        <div class="full-button-container-edit-news">
-             <button type="button" class="full-edit-news-button" id="full-edit-news-button" onclick="editButtonFromFull()">Редактировать</button>
-        </div>
+        <form id="article">
+            <div class="full-news-id">
+                <p class="full-news-id-p" id="full-news-id-p"></p>
+            </div>
+            <div class="full-news-date">
+                <p class="full-news-date-p" id="full-news-date-p"></p>
+            </div>
+            <div class="full-news-title">
+                <p class="full-news-title-p" id="full-news-title-p"></p>
+            </div>
+            <div class="full-news-speech">
+                <p class="full-news-speech-p" id="full-news-speech-p"></p>
+            </div>
+            <div class="full-news-author">
+                <p class="full-news-author-p" id="full-news-author-p"></p>
+            </div>
+            <div class="full-button-container-delete-news" >
+                <button type="button" class="full-delete-news-button" id="full-delete-news-button" onclick="deleteButtonFromFull()">Удалить</button>
+            </div>
+            <div class="full-button-container-edit-news">
+                <button type="button" class="full-edit-news-button" id="full-edit-news-button" onclick="editButtonFromFull()">Редактировать</button>
+            </div>
+        </form>
         
     </div>
 
@@ -190,7 +199,7 @@
         <p class="footer">27.02.97</p>
     </footer>
 
-    <template id="template-article-list-item">
+    <!--<template id="template-article-list-item">
         <div class="news-item">
             <div class="news-data">
                 <p class="news-data"></p>
@@ -201,48 +210,79 @@
                 </div>
                 <div class="news-speech"></div>
             </div>
-            <!--<div class="news-tags">
-                <p class="tags"></p>
-            </div>-->
+            
             <div class="news-author-delete-edit">
                 <p class="news-author"></p>
                 <button class="read-post-button">Подробнее</button>
                 <p class="delete">
-                    <img class="news-delete" src="../moqups/img/delete.png"></img>
+                    <img class="news-delete" src="img/delete.png"></img>
                 </p>
                 <p class="edit">
-                    <img class="news-edit" src="../moqups/img/edit.png"></img>
+                    <img class="news-edit" src="img/edit.png"></img>
                 </p>
                 <div class="clear-block"></div>
             </div>
         </div>
         </div>
-    </template>
+    </template>-->
 
     <!-- forms -->
     <div class="filter">
         <form class="news-filter" id="news-filter" name="filter">
             <p class="news-filter-title">Фильтр</p>
             <p class="news-filter-author">По имени автора:</p>
-            <input type="text" name="author" class="news-filter-input" placeholder="Петров А.Г.">
+            <input type="text" name="author" class="news-filter-input" id="news-filter-input-author" placeholder="Петров А.Г.">
             <p class="news-filter-data">С:</p>
-            <input type="date" name="dateFrom" class="news-filter-input" placeholder="12.07.43">
+            <input type="date" name="dateFrom" class="news-filter-input" id="news-filter-input-from" placeholder="12.07.43">
             <p class="news-filter-month">По:</p>
-            <input type="date" name="dateTo" class="news-filter-input" placeholder="02">
+            <input type="date" name="dateTo" class="news-filter-input" id="news-filter-input-to" placeholder="02">
             <p class="news-filter-tags">По тегам</p>
             <input type="test" name="tags" class="news-filter-input" placeholder="#Belarus #Minsk">
             <div class="button-container">
                 <button type="button" onclick="hideFilter()">Отмена</button>
             </div>
-            <input name="submit" type="button" value="Применить"></input>
+            <div class="button-container">
+                <button type="button" onclick="okFilter()">Применить</button>
+            </div>
+            
+            <!--<input name="submit" type="button" value="Применить"></input>-->
         </form>
     </div>
 
+    <div class="user-enter-container" id="user-enter-container">
+        <input type="text" name="login" id="user-enter-login-input" placeholder="Петров А.Г.">
+        <input type="text" name="password" id="user-enter-password-input" placeholder="1234">
+        <div class="button-container-enter">
+            <button type="button" onclick="enterAndExitHide()">Войти</button>
+        </div>
+        <div class="button-container-enter">
+                <button type="button" onclick="hideEnterContainer()">Отмена</button>
+            </div>
+        <div class="clear-block"></div>
+    </div>
+
+    <div class="user-exit-container" id="user-exit-container">
+        <p id="user-exit-container-name"></p>
+        <div class="button-container-exit"> 
+            <button type="button" onclick="enterAndExitHide()">Выйти</button>
+        </div>
+        <div class="button-container-exit">
+                <button type="button" onclick="hideExitContainer()">Отмена</button>
+        </div>
+        <div class="clear-block"></div>
+    </div>
+
+
     <div id="overlay"></div>
 
-    <script type="text/javascript" src="../UI/scripts/articleController.js"></script>
-    <script type="text/javascript" src="../UI/scripts/htmlControllerModule.js"></script>
-    <script type="text/javascript" src="../UI/scripts/script.js"></script>
+    
+    <script type="text/javascript" src="scripts/requests.js"></script>
+    <script type="text/javascript" src="scripts/articlesArray.js"></script>   
+    <script type="text/javascript" src="scripts/htmlControllerModule.js"></script>
+    <script type="text/javascript" src="scripts/script.js"></script>
+    <script type="text/javascript" src="scripts/pagination.js"></script>        
+    
+
 </body>
 
 </html>
