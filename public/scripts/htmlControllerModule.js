@@ -50,17 +50,13 @@ const htmlController = (function () {
   }
 
   function renderArticle(article) {
-    const template = ARTICLE_TEMPLATE;
-    template.content.querySelector('.news-item').id = article._id;
-    template.content.querySelector('.news-link').textContent = article.title;
-    template.content.querySelector('.news-speech').textContent = article.summary;
-    template.content.querySelector('.news-author').textContent = article.author;
-    template.content.querySelector('p.news-data').textContent = formatDate(article.createdAt);
-    // template.content.querySelector('.tags').textContent = '';
-    // article.tags.forEach(function(tag) {
-    //   template.content.querySelector('.tags').textContent +=  ' ' + tag;
-    // });
-    return template.content.querySelector('.news-item').cloneNode(true);
+    const t = ARTICLE_TEMPLATE;
+    t.content.querySelector('.news-item').id = article._id;
+    t.content.querySelector('.news-link').textContent = article.title;
+    t.content.querySelector('.news-speech').textContent = article.summary;
+    t.content.querySelector('.news-author').textContent = article.author;
+    t.content.querySelector('p.news-data').textContent = formatDate(article.createdAt);
+    return t.content.querySelector('.news-item').cloneNode(true);
   }
   function addArticle(article) {
     const html = renderArticle(article);

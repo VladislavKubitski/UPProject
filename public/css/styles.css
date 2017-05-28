@@ -27,32 +27,10 @@ header {
 	padding: 0px 60px;
 	margin-bottom: 0%;
 	float: left;
+	cursor: pointer;
 }
 .picture-header {
 	height: 70px;
-}
-.tags-buttons {
-  background: transparent;
-  text-align: center;
-	border-style: none;
-  color: #FF5722;
-  cursor: pointer;
-  outline-style: none;
-	float: left;
-	margin-top: 20px;
-}
-.body-header-tag-button {
-	float: right;
-	border: 0;
-	outline: 0;
-	color: #FBE9E7;
-	background-color: transparent;
-	font-size: 18px;
-	padding: 4px 20px;
-}
-.body-header-tag-button:hover {
-	color: #FFF;
-	text-decoration: 'underline';
 }
 
 .container-user-add {
@@ -60,16 +38,36 @@ header {
 	right: 0;
 	height: 3em;
 }
+
 .enter-add, .enter-user, .filter {
 	float: left;
 	width: 30px;
 	padding: 10px;
 	margin: 10px;
+	cursor: pointer;
 }
 
 #enter-add , #enter-user, .filter-icon {
 	width: 100%;
 }
+
+button {
+	margin: 5px;
+	padding: 3px 10px;
+	float: left;
+	border: 0;
+	outline: 0;
+	color: #FF5722;
+	font-size: 14px;
+	background: transparent;
+	border-radius: 10px;
+}
+
+button:hover {
+	background: #FF5722;
+	color:  #FFF;
+}
+
 
 /* news */
 
@@ -163,13 +161,8 @@ p.tags {
 
 .read-post-button {
 	float: right;
-	border: 0;
-	outline: 0;
-	color: #FF5722;
-	background-color: transparent;
 	font-size: 14px;
 	padding: 4px 20px;
-	border-radius: 10px;
 }
 
 .read-post-button:hover {
@@ -177,15 +170,25 @@ p.tags {
 	background: #FF5722;
 }
 
-.show-more-button {
+.show-more-button,
+#message-about-the-end {
 	text-align: center;
 }
 
-.show-more-button p {
+.show-more-button p,
+#message-about-the-end p{
 	color: #FF5722;
 	font-size: 18px;
 	padding: 10px 20px;
 	border-radius: 10px;
+}
+
+.show-more-button p {
+	color: #FF5722;
+}
+
+#message-about-the-end p{
+	color: #999;
 }
 
 .show-more-button p:hover {
@@ -209,12 +212,13 @@ footer {
 .news-filter {
 	position: fixed;
 	top: 70px;
-	right: -250px;
+	right: -1000px;
+	width: 250px;
 	border-radius: 0 0 0 15px;
 	z-index: 20;
 	background: #FFF;
 	padding: 20px;
-	transition-duration: 0.5s;
+	transition-duration: 0.7s;
 }
 p.news-filter-title {
 	font-size: 20px;
@@ -249,50 +253,35 @@ p.news-filter-title {
 	width: calc(100% - 40px);
 }
 
-.news-filter .button-container button {
-	margin: 5px;
-	width: calc(50% - 10px);
-	float: left;
-	border: 0;
-	outline: 0;
-	color: #FF5722;
-	font-size: 14px;
-	background: transparent;
-}
-
-.news-filter .button-container button:hover {
-	background: #FF5722;
-	color:  #FFF;
-}
-
-
 /*enter-exit*/
 .user-enter-container {
 	position: fixed;
 	top: 70px;
 	right: -1000px;
+	width: 250px;
 	border-radius: 0 0 0 15px;
 	z-index: 20;
 	background: #FFF;
 	padding: 20px;
-	transition-duration: 0.5s;
+	transition-duration: 0.7s;
 }
 .user-exit-container  {
 	position: fixed;
 	top: 70px;
 	right: -1000px;
+	width: 250px;
 	border-radius: 0 0 0 15px;
 	z-index: 20;
 	background: #FFF;
 	padding: 20px;
-	transition-duration: 0.5s;
+	transition-duration: 0.7s;
 }
 #user-exit-container-name {
 	font-size: 20px;
 	text-align: center;
 	margin-top: 5px;
 	margin-bottom: 15px;
-	color: #FF5722;
+	color: #999;
 }
 #user-enter-login-input{
 	margin: 4px 20px;
@@ -313,49 +302,6 @@ p.news-filter-title {
 	background: #F5F5F5;
 }
 
-
-.button-container-enter {
-	margin: 4px 20px;
-	width: calc(100% - 40px);
-}
-.button-container-exit {
-	margin: 4px 20px;
-	width: calc(100% - 40px);
-}
-
-.button-container-enter {
-	margin: 5px;
-	width: calc(50% - 10px);
-	float: left;
-	border: 0;
-	outline: 0;
-	color: #FF5722;
-	font-size: 14px;
-	background: transparent;
-	border-radius: 10px;
-}
-.button-container-exit {
-	margin: 5px;
-	width: calc(50% - 10px);
-	float: left;
-	border: 0;
-	outline: 0;
-	color: #FF5722;
-	font-size: 14px;
-	background: transparent;
-	border-radius: 10px;
-}
-
-.button-container-enter :hover {
-	background: #FF5722;
-	color:  #FFF;
-}
-.button-container-exit :hover {
-	background: #FF5722;
-	color:  #FFF;
-}
-
-
 .clear-block {
 	clear: both;
 }
@@ -372,7 +318,6 @@ p.news-filter-title {
 	bottom: 0;
 	background: #000;
 	opacity: 0.8;
-	transition-duration: 0.5s;
 	display: none;
 }
 

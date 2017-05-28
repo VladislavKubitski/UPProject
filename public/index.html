@@ -7,19 +7,12 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" media="screen" href="css/media.css">
 
+    <link rel="shortcut icon" href="img/news.ico">
 </head>
 
 <body>
     <header id="qwerty">
-        <p class="picture"><img class="picture-header" src="img/SpNews.png"></p>
-        <div class="tags-buttons">
-            <button class="body-header-tag-button">Космос</button>
-            <button class="body-header-tag-button">Наука</button>
-            <button class="body-header-tag-button">НАСА</button>
-            <button class="body-header-tag-button">История</button>
-            <button class="body-header-tag-button">Земля</button>
-            <button class="body-header-tag-button">Все</button>
-        </div>
+        <p class="picture" id="picture-logo"><img class="picture-header" src="img/SpNews.png"></p>
         <div class="container-user-add">
             <p class="enter-add" onclick="addNews()">
                 <img id="enter-add" src="img/add.png"></img>
@@ -35,12 +28,15 @@
     </header>
 
     <div class="news-container" id="news-part">
-        <div class="news-left-part" >
+        <div class="news-left-part">
             <div class="clear-block"></div>
         </div>
         <div class="clear-block"></div>
         <div class="show-more-button" id="show-more-button">
             <p>Загрузить еще</p>
+        </div>
+        <div id="message-about-the-end">
+            <p>Больше статей не найдено.</p>
         </div>
     </div>
 
@@ -49,31 +45,29 @@
             <div class="news-data">
                 <p class="news-data"></p>
             </div>
+
             <div class="news-clamping">
                 <div class="news-subtitle">
                     <a class="news-link"></a>
                 </div>
                 <div class="news-speech"></div>
             </div>
-            <!--<div class="news-tags">
-                <p class="tags"></p>
-            </div>-->
+
             <div class="news-author-delete-edit">
                 <p class="news-author"></p>
-                <button class="read-post-button" >Подробнее</button>
-                <p class="delete">
-                    <img class="news-delete" src="img/delete.png"></img>
-                </p>
-                <p class="edit">
-                    <img class="news-edit" src="img/edit.png"></img>
-                </p>
+                <button class="read-post-button">Подробнее</button>
+                <div class="user-buttons">
+                    <p class="delete">
+                        <img class="news-delete" src="img/delete.png"></img>
+                    </p>
+                    <p class="edit">
+                        <img class="news-edit" src="img/edit.png"></img>
+                    </p>
+                </div>
                 <div class="clear-block"></div>
             </div>
         </div>
-        </div>
     </template>
-
-
 
 
     <div id="add-news-container">
@@ -82,40 +76,40 @@
             <p class="add-news-id-p">
                 ID:
             </p>
-            <input type="text" name="add-id" id="add-news-id-input" disabled> 
+            <input type="text" name="add-id" id="add-news-id-input" disabled>
         </div>
         <div class="add-news-title">
             <p class="add-news-title-p">
                 Заголовок:
             </p>
-            <input type="text" name="add-title" id="add-news-title-input" required placeholder="Заголовок" maxlength="100"> 
+            <input type="text" name="add-title" id="add-news-title-input" required placeholder="Заголовок" maxlength="100">
         </div>
         <div class="add-news-name-author">
             <p class="add-news-name-author-p">
                 Имя автора:
             </p>
-            <input type="text" name="add-author" id="add-news-name-author-input" disabled> 
+            <input type="text" name="add-author" id="add-news-name-author-input" disabled>
         </div>
         <div class="add-news-date">
             <p class="add-news-date-p">
                 Дата и время добавления:
             </p>
-            <input type="text" name="add-date" id="add-news-date-input" disabled> 
+            <input type="text" name="add-date" id="add-news-date-input" disabled>
         </div>
         <div class="add-news-summary">
             <p class="add-news-summary-p">
                 Краткое описание:
             </p>
-            <input type="text" name="add-summaty" id="add-news-summary-input" required placeholder="Краткое описание" maxlength="200"> 
+            <input type="text" name="add-summaty" id="add-news-summary-input" required placeholder="Краткое описание" maxlength="200">
         </div>
-         <div class="add-news-content">
+        <div class="add-news-content">
             <p class="add-news-content-p">
                 Текст:
             </p>
-            <input type="text" name="add-content" id="add-news-content-input" required placeholder="Текст"> 
+            <input type="text" name="add-content" id="add-news-content-input" required placeholder="Текст">
         </div>
         <div class="button-container-add-news">
-                <button type="button" class="add-news-button" id="add-news-button">Добавить</button>
+            <button type="button" class="add-news-button" id="add-news-button">Добавить</button>
         </div>
         <div class="clear-block"></div>
     </div>
@@ -126,40 +120,40 @@
             <p class="edit-news-id-p">
                 ID:
             </p>
-            <input type="text" name="edit-id" id="edit-news-id-input" disabled> 
+            <input type="text" name="edit-id" id="edit-news-id-input" disabled>
         </div>
         <div class="edit-news-title">
             <p class="edit-news-title-p">
                 Заголовок:
             </p>
-            <input type="text" name="edit-title" id="edit-news-title-input" required placeholder="Заголовок" maxlength="100"> 
+            <input type="text" name="edit-title" id="edit-news-title-input" required placeholder="Заголовок" maxlength="100">
         </div>
         <div class="edit-news-name-author">
             <p class="edit-news-name-author-p">
                 Имя автора:
             </p>
-            <input type="text" name="edit-author" id="edit-news-name-author-input" disabled> 
+            <input type="text" name="edit-author" id="edit-news-name-author-input" disabled>
         </div>
         <div class="edit-news-date">
             <p class="edit-news-date-p">
                 Дата и время добавления:
             </p>
-            <input type="text" name="edit-date" id="edit-news-date-input" disabled> 
+            <input type="text" name="edit-date" id="edit-news-date-input" disabled>
         </div>
         <div class="edit-news-summary">
             <p class="edit-news-summary-p">
                 Краткое описание:
             </p>
-            <input type="text" name="edit-summaty" id="edit-news-summary-input" required placeholder="Краткое описание" maxlength="200"> 
+            <input type="text" name="edit-summaty" id="edit-news-summary-input" required placeholder="Краткое описание" maxlength="200">
         </div>
-         <div class="edit-news-content">
+        <div class="edit-news-content">
             <p class="edit-news-content-p">
                 Текст:
             </p>
-            <input type="text" name="edit-content" id="edit-news-content-input" required placeholder="Текст"> 
+            <input type="text" name="edit-content" id="edit-news-content-input" required placeholder="Текст">
         </div>
         <div class="button-container-edit-news">
-                <button type="button" class="edit-news-button" id="edit-news-button">Редактировать</button>
+            <button type="button" class="edit-news-button" id="edit-news-button">Редактировать</button>
         </div>
         <div class="clear-block"></div>
     </div>
@@ -182,14 +176,14 @@
             <div class="full-news-author">
                 <p class="full-news-author-p" id="full-news-author-p"></p>
             </div>
-            <div class="full-button-container-delete-news" >
+            <div class="full-button-container-delete-news">
                 <button type="button" class="full-delete-news-button" id="full-delete-news-button" onclick="deleteButtonFromFull()">Удалить</button>
             </div>
             <div class="full-button-container-edit-news">
                 <button type="button" class="full-edit-news-button" id="full-edit-news-button" onclick="editButtonFromFull()">Редактировать</button>
             </div>
         </form>
-        
+
     </div>
 
 
@@ -198,33 +192,6 @@
         <p class="footer">Кубицкий Владислав Олегович</p>
         <p class="footer">27.02.97</p>
     </footer>
-
-    <!--<template id="template-article-list-item">
-        <div class="news-item">
-            <div class="news-data">
-                <p class="news-data"></p>
-            </div>
-            <div class="news-clamping">
-                <div class="news-subtitle">
-                    <a class="news-link"></a>
-                </div>
-                <div class="news-speech"></div>
-            </div>
-            
-            <div class="news-author-delete-edit">
-                <p class="news-author"></p>
-                <button class="read-post-button">Подробнее</button>
-                <p class="delete">
-                    <img class="news-delete" src="img/delete.png"></img>
-                </p>
-                <p class="edit">
-                    <img class="news-edit" src="img/edit.png"></img>
-                </p>
-                <div class="clear-block"></div>
-            </div>
-        </div>
-        </div>
-    </template>-->
 
     <!-- forms -->
     <div class="filter">
@@ -236,52 +203,48 @@
             <input type="date" name="dateFrom" class="news-filter-input" id="news-filter-input-from" placeholder="12.07.43">
             <p class="news-filter-month">По:</p>
             <input type="date" name="dateTo" class="news-filter-input" id="news-filter-input-to" placeholder="02">
-            <p class="news-filter-tags">По тегам</p>
-            <input type="test" name="tags" class="news-filter-input" placeholder="#Belarus #Minsk">
             <div class="button-container">
                 <button type="button" onclick="hideFilter()">Отмена</button>
             </div>
             <div class="button-container">
                 <button type="button" onclick="okFilter()">Применить</button>
             </div>
-            
-            <!--<input name="submit" type="button" value="Применить"></input>-->
+
         </form>
     </div>
 
     <div class="user-enter-container" id="user-enter-container">
         <input type="text" name="login" id="user-enter-login-input" placeholder="Петров А.Г.">
-        <input type="text" name="password" id="user-enter-password-input" placeholder="1234">
+        <input type="password" name="password" id="user-enter-password-input" placeholder="1234">
         <div class="button-container-enter">
-            <button type="button" onclick="enterAndExitHide()">Войти</button>
+            <button type="button" onclick="loginButtonClickHandler()">Войти</button>
         </div>
         <div class="button-container-enter">
-                <button type="button" onclick="hideEnterContainer()">Отмена</button>
-            </div>
+            <button type="button" onclick="hideEnterContainer()">Отмена</button>
+        </div>
         <div class="clear-block"></div>
     </div>
 
     <div class="user-exit-container" id="user-exit-container">
         <p id="user-exit-container-name"></p>
-        <div class="button-container-exit"> 
-            <button type="button" onclick="enterAndExitHide()">Выйти</button>
+        <div class="button-container-exit">
+            <button type="button" onclick="logoutButtonClickHandler()">Выйти</button>
         </div>
         <div class="button-container-exit">
-                <button type="button" onclick="hideExitContainer()">Отмена</button>
+            <button type="button" onclick="closeAllContainers()">Отмена</button>
         </div>
         <div class="clear-block"></div>
     </div>
 
 
-    <div id="overlay"></div>
+    <div id="overlay" onclick="closeAllContainers()"></div>
 
-    
+
     <script type="text/javascript" src="scripts/requests.js"></script>
-    <script type="text/javascript" src="scripts/articlesArray.js"></script>   
+    <script type="text/javascript" src="scripts/articlesController.js"></script>
     <script type="text/javascript" src="scripts/htmlControllerModule.js"></script>
     <script type="text/javascript" src="scripts/script.js"></script>
-    <script type="text/javascript" src="scripts/pagination.js"></script>        
-    
+
 
 </body>
 
